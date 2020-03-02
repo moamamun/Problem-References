@@ -110,7 +110,57 @@ class BST {
         }
     this.root = removeNode(this.root, data);
     }
+
+    dfsInorder() {
+      let result = []
+  
+      const traverse = node => {
+          if (node.left) traverse(node.left)
+  
+          result.push(node.data)
+  
+          if(node.right) traverse(node.right)
+  
+      }
+
+      traverse(this.root)
+      return result 
+  }
+
+  dfsPreOrder() {
+      let result = []
+          
+      const traverse = node => {
+
+          result.push(node.data)
+
+          if (node.left) traverse(node.left)
+      
+          if(node.right) traverse(node.right)
+  
+      }
+
+      traverse(this.root)
+      return result 
+  }
+
+  dfsPostOrder() {
+      let result = []
+          
+      const traverse = node => {
+          if (node.left) traverse(node.left)
+      
+          if(node.right) traverse(node.right)
+
+          result.push(node.data)
+
+      }
+
+      traverse(this.root)
+      return result 
+  }
 }
+
 
 //example
 const bts = new BST()
