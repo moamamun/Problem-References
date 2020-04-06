@@ -59,6 +59,26 @@ class Graph {
         }
         return result
     }
+    breathFirst(start) {
+        const queue = [start]
+        const result = []
+        const visited = {}
+        let currentVertex
+        
+        visited[start] = true
+        while(queue.length) {
+            currentVertex = queue.shift()
+            result.push(currentVertex)
+
+            this.adjacencyList[currentVertex].forEach( nb => {
+                if(!visited[nb]) {
+                    visited[nb] = true
+                    queue.push(nb)
+                }
+            })
+        }
+        return result
+    }
 }
 
 
@@ -78,5 +98,5 @@ g.addEdge("C","E")
 g.addEdge("D","E")
 g.addEdge("D","F")
 g.addEdge("E","F")
-console.log(g.depthFirstIterative('A'))
+console.log(g.breathFirst('A'))
 
